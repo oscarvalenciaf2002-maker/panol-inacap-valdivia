@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Dashboard Pañolero | INACAP{% endblock %}
+{% block body %}
+<div class="min-h-screen md:flex">{% include "panolero/sidebar.html" %}<main class="flex-1 md:ml-64 p-5 md:p-8">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-7"><div><p class="text-steel text-sm">Panel de administración</p><h1 class="text-3xl font-extrabold">Dashboard del Pañol</h1><p class="text-steel mt-1">Control operativo de solicitudes e inventario.</p></div><a href="/panolero/meson/" class="btn btn-primary">＋ Registrar en mesón</a></div>
+<div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-5">
+<div class="card p-5"><p class="text-steel text-sm">Préstamos activos</p><b id="dActivos" class="text-3xl block mt-2">—</b><span class="text-xs text-info">pendientes de devolución</span></div>
+<div class="card p-5"><p class="text-steel text-sm">Devueltos hoy</p><b id="dDevueltos" class="text-3xl block mt-2">—</b><span class="text-xs text-success">estado D</span></div>
+<div class="card p-5"><p class="text-steel text-sm">Fuera de stock</p><b id="dStock" class="text-3xl block mt-2">—</b><span class="text-xs text-warning">requieren atención</span></div>
+<div class="card p-5"><p class="text-steel text-sm">Mermas</p><b id="dMermas" class="text-3xl block mt-2">—</b><span class="text-xs text-inacap">histórico</span></div>
+</div>
+<div class="card mt-6 overflow-hidden"><div class="p-5 border-b flex justify-between"><div><h2 class="font-extrabold">Últimas solicitudes</h2><p class="text-xs text-steel">Actualiza la página para consultar nuevos registros.</p></div><a href="/panolero/prestamos/" class="text-inacap font-bold text-sm">Ver préstamos →</a></div>
+<div class="overflow-x-auto"><table class="w-full text-sm"><thead class="bg-slate-50"><tr><th class="p-4 text-left">Solicitud</th><th class="p-4 text-left">Solicitante</th><th class="p-4 text-left">Asignatura</th><th class="p-4 text-left">Fecha</th><th class="p-4 text-left">Estado</th></tr></thead><tbody id="dUltimas"></tbody></table></div></div>
+</main></div>
+{% endblock %}
+{% block scripts %}<script src="/static/js/panolero.js"></script><script>loadPanolDashboard()</script>{% endblock %}

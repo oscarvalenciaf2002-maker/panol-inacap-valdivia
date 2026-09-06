@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Inventario | Pañol INACAP{% endblock %}
+{% block body %}<div class="min-h-screen md:flex">{% include "panolero/sidebar.html" %}<main class="flex-1 md:ml-64 p-5 md:p-8">
+<div class="flex flex-col sm:flex-row justify-between gap-4 mb-7"><div><h1 class="text-3xl font-extrabold">Inventario</h1><p class="text-steel mt-1">Catálogo y disponibilidad actual.</p></div><button class="btn btn-primary" onclick="alert('Formulario de alta listo para conectar a POST /api/catalogo/.')">＋ Nuevo artículo</button></div>
+<div class="card overflow-hidden"><div class="p-4 border-b flex flex-col sm:flex-row gap-3"><input id="buscarInv" class="input" placeholder="🔎 Buscar artículo"><select id="catInv" class="input sm:max-w-xs"><option value="">Todas las categorías</option></select></div><div class="overflow-x-auto"><table class="w-full text-sm"><thead class="bg-slate-50"><tr><th class="p-4 text-left">Artículo</th><th class="p-4 text-left">Categoría</th><th class="p-4">Stock</th><th class="p-4">Disponible</th><th class="p-4">Reparable</th><th class="p-4">Malo</th><th class="p-4 text-left">Lugar</th></tr></thead><tbody id="tablaInventario"></tbody></table></div></div>
+</main></div>{% endblock %}
+{% block scripts %}<script src="/static/js/panolero.js"></script><script>loadInventario()</script>{% endblock %}

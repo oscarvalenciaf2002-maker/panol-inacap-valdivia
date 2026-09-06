@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Nueva solicitud | Pañol INACAP{% endblock %}
+{% block body %}
+<div class="min-h-screen md:flex">{% include "usuario/sidebar.html" %}<main class="flex-1 md:ml-64 p-5 md:p-8 max-w-6xl">
+<div class="mb-7"><p class="text-steel text-sm">Nueva solicitud</p><h1 class="text-3xl font-extrabold">Solicitar herramientas</h1><p class="text-steel mt-1">Completa los datos y envía el pedido al pañol.</p></div>
+<form id="solicitudForm" class="space-y-6">
+<section class="card p-6"><div class="flex items-center gap-3 mb-6"><span class="w-9 h-9 rounded-full bg-red-50 text-inacap flex items-center justify-center font-bold">1</span><div><h2 class="font-extrabold">Datos académicos</h2><p class="text-xs text-steel">Tus datos personales se cargan automáticamente.</p></div></div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div><label class="text-sm font-semibold">RUT</label><input class="input mt-2" value="{{ usuario.rut }}" readonly></div>
+<div><label class="text-sm font-semibold">Nombre</label><input class="input mt-2" value="{{ usuario.nombre }} {{ usuario.apellido_paterno }} {{ usuario.apellido_materno|default:'' }}" readonly></div>
+<div><label class="text-sm font-semibold">Asignatura</label><select id="asignatura" class="input mt-2" required></select></div>
+<div><label class="text-sm font-semibold">Sección</label><input id="seccion" class="input mt-2" maxlength="20" required placeholder="Ej: 001"></div>
+<div class="md:col-span-2"><label class="text-sm font-semibold">Nombre del docente</label><input id="docente" class="input mt-2" required placeholder="Nombre del docente"></div>
+</div></section>
+<section class="card p-6"><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5"><div><div class="flex items-center gap-3"><span class="w-9 h-9 rounded-full bg-red-50 text-inacap flex items-center justify-center font-bold">2</span><h2 class="font-extrabold">Herramientas</h2></div><p class="text-xs text-steel mt-1 ml-12">Máximo 10 ítems.</p></div><input id="buscarArticulo" class="input sm:w-72" placeholder="🔎 Buscar herramienta"></div>
+<div id="catalogo" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+<div class="mt-6 border-t pt-5"><h3 class="font-extrabold">Carrito de préstamo</h3><div id="carrito" class="mt-3 space-y-2"></div></div></section>
+<section class="card p-6"><div class="flex items-start gap-3"><input id="firma" type="checkbox" class="mt-1 w-5 h-5 accent-red-600" required><div><b>Declaración y validación</b><p class="text-sm text-steel mt-1">Declaro que los datos son correctos y acepto las normas de uso del pañol. Presentaré C.I. o pase escolar vigente al retirar.</p></div></div>
+<div id="msg" class="hidden mt-4 p-3 rounded-xl text-sm"></div>
+<button class="btn btn-primary mt-5">Enviar solicitud al pañol →</button></section>
+</form></main></div>
+{% endblock %}
+{% block scripts %}<script src="/static/js/usuario.js"></script><script>initSolicitud()</script>{% endblock %}

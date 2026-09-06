@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Mesón | Pañol INACAP{% endblock %}
+{% block body %}<div class="min-h-screen md:flex">{% include "panolero/sidebar.html" %}<main class="flex-1 md:ml-64 p-5 md:p-8 max-w-7xl">
+<div class="mb-7"><h1 class="text-3xl font-extrabold">Registro manual en mesón</h1><p class="text-steel mt-1">Digitalización de la ficha física en una sola pantalla.</p></div>
+<div class="card p-6"><p class="text-steel">Esta vista reutiliza el mismo flujo de solicitud del portal usuario. Para operación de mesón, selecciona usuario, asignatura y herramientas, y registra la entrega desde el módulo.</p><a class="btn btn-primary inline-block mt-5" href="/usuario/solicitud/">Abrir formulario de solicitud</a></div>
+</main></div>{% endblock %}

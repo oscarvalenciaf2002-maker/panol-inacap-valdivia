@@ -1,0 +1,9 @@
+services:
+  - type: web
+  - name: sistema-panol-django
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn tu_proyecto.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0

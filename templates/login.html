@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Acceso | Pañol INACAP{% endblock %}
+{% block body %}
+<div class="min-h-screen grid lg:grid-cols-2">
+<section class="hidden lg:flex relative overflow-hidden bg-ink text-white p-12 items-end">
+<div class="absolute -top-32 -right-32 w-96 h-96 bg-inacap rounded-full opacity-70"></div>
+<div class="absolute bottom-10 right-10 w-48 h-48 border border-white/20 rounded-full"></div>
+<div class="relative max-w-xl">
+<div class="flex items-center gap-3 mb-8"><div class="w-12 h-12 rounded-2xl bg-inacap flex items-center justify-center font-extrabold text-xl">I</div><div><b class="text-xl">INACAP</b><p class="text-white/60 text-sm">Pañol · Valdivia</p></div></div>
+<h1 class="text-5xl font-extrabold leading-tight">Gestión inteligente de herramientas.</h1>
+<p class="mt-5 text-white/65 text-lg">Solicitudes, préstamos, devoluciones e inventario en una sola plataforma.</p>
+</div>
+</section>
+<section class="flex items-center justify-center p-6">
+<div class="w-full max-w-md">
+<div class="lg:hidden flex items-center gap-3 mb-10"><div class="w-11 h-11 rounded-xl bg-inacap text-white flex items-center justify-center font-bold">I</div><b>INACAP · Pañol Valdivia</b></div>
+<div class="card p-8">
+<p class="text-sm text-steel font-semibold">PORTAL INSTITUCIONAL</p>
+<h2 class="text-3xl font-extrabold mt-1">Bienvenido</h2>
+<p class="text-steel mt-2">Ingresa con tu RUT registrado.</p>
+{% if error %}<div class="mt-5 p-3 rounded-xl bg-red-50 text-red-700 text-sm">{{ error }}</div>{% endif %}
+<form method="post" class="mt-7 space-y-5">
+{% csrf_token %}
+<div><label class="text-sm font-semibold">RUT</label><input name="rut" class="input mt-2" placeholder="12.345.678-9" required></div>
+<div><label class="text-sm font-semibold">Portal</label><select name="rol" class="input mt-2"><option value="usuario">Alumno / Docente</option><option value="panolero">Pañolero</option></select></div>
+<button class="btn btn-primary w-full mt-2">Ingresar al sistema</button>
+</form>
+<p class="text-xs text-steel mt-6">Modo demo: el RUT debe existir en la tabla <b>usuarios</b>. En producción se recomienda SSO institucional.</p>
+</div>
+</div>
+</section>
+</div>
+{% endblock %}
