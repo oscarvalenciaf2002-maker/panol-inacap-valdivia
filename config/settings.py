@@ -19,13 +19,17 @@ INSTALLED_APPS = [
 
     # Tus aplicaciones personalizadas
     'panol',
-]
+]   
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # Si usas WhiteNoise
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",  # <--- Agrega este
+    "django.contrib.messages.middleware.MessageMiddleware",  # <--- Agrega este
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
