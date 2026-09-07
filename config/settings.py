@@ -10,11 +10,15 @@ DEBUG = os.getenv("DEBUG", "True").lower() == "true"
 ALLOWED_HOSTS = ['panol-inacap-valdivia.onrender.com', 'localhost', '127.0.0.1', '*']
 
 INSTALLED_APPS = [
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.staticfiles",
-    "rest_framework",
-    "panol",
+    'django.contrib.admin',        # <--- Verifica o agrega esta línea
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    # Tus aplicaciones personalizadas
+    'panol',
 ]
 
 MIDDLEWARE = [
